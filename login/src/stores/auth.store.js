@@ -22,8 +22,7 @@ export const useAuthStore = defineStore({
                 this.user = user;
 
                 // store user details and jwt in local storage to keep user logged in between page refreshes
-                console.log(this.user);
-                setCookie("user", this.user.token, 30);
+                setCookie("token", this.user.token, 30);
                 // let data_user = getCookie("user")
                 // console.log(data_user);
                 // localStorage.setItem('user', JSON.stringify(user));
@@ -38,6 +37,7 @@ export const useAuthStore = defineStore({
         },
         logout() {
             this.user = null;
+
             localStorage.removeItem('user');
             router.push('/account/login');
         }
